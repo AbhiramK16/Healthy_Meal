@@ -15,8 +15,10 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mealtime.settings')
 
 application = get_wsgi_application()
 
-# Run migrations on cold start so database tables exist on Vercel
-from django.core.management import call_command
-call_command('migrate', '--noinput')
+# Run migrations on cold start if using a writable database (PostgreSQL)
+from django.conf import settings
+if 'sqlite3' not in settings.DATABASES['default']['ENGINE']:
+    from django.core.management import call_command
+    call_command('migrate', '--noinput')
 
 app = application
