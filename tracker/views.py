@@ -24,15 +24,21 @@ def search(request):
         
         findings = food.json().get('foods', [])
         check = query.lower().strip()
+
+        if not findings:
+            return render(request, 'search.html', {'message': 'No results found for your query'})
+
+        found_food = None
         for finding in findings:
-            if check == finding['description'].lower().strip(): 
+            if check == finding['description'].lower().strip():
+                found_food = finding
                 break
-            else:
-                message = "Please type a valid food"
-                return render(request, 'search.html', {'message': message})
+
+        found_food = found_food or findings[0]
+
         new_nutrient_names = {'Protein' : 'Protein', "Energy" : "Energy", "Total lipid (fat)" : "Fat", "Carbohydrate, by difference" : "Carbs", "Total Sugars" : "Sugars", "Fiber, total dietary": "Fibers", "Calcium, Ca" : "Calcium",  "Magnesium, Mg" : "Magnesium", "Iron, Fe" : "Iron"}
         nutrient_values = {"Protein": [], "Energy": [], "Fat" : [], "Carbs" : [], "Sugars" : [], "Fibers" : [], "Calcium" : [], "Iron" : [], "Magnesium" : []}
-        for nutrient in findings[0]['foodNutrients']:
+        for nutrient in found_food['foodNutrients']:
             if nutrient['nutrientName'] in new_nutrient_names:
                 nutrient_values[new_nutrient_names[nutrient['nutrientName']]].append(round((value/100) * int(nutrient['value']), ndigits=3))
                 nutrient_values[new_nutrient_names[nutrient['nutrientName']]].append(nutrient['unitName'].lower())
