@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
-def logout(request):
+def logout_view(request):
     logout(request)
     return redirect('/')
 
