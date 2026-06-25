@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <title>My Plan</title>
+</head>
+<body id="meals_page">
+     <section style="background-color:#66BB6A" id="header">
+
+		<div class="container">
+			<h1 id="logo"><a href="{% url 'index' %}">Healthy Meal</a></h1>
+			<nav id="nav">
+				<ul class="homebar">
+				<li><a  href="{% url 'index' %}"><span> Home </span></a></li>
+                <li><a  href="{% url 'index' %}"><span> Hello, {{user.first_name}}</span></a></li>
+				<li>	<a  href="{% url 'logout' %}"><span>Logout</span></a> </li>
+				<li> <a href="{% url 'search' %}"> <span> Foods</span></a></li>
+                <li> <a href="{% url 'myplan' %}"> <span> My Plan</span></a></li>
+
+    	        </ul>
+			</nav>
+		</div>
+    </section>
+    <h2 style="text-align: center; font-size: 60px; background-color: #f7f7f5; background-size: cover;"> My Meal Plan</h2>
+    <div class="eating"> 
+    <form method="GET" action="{% url 'myplan' %}">
+        <select name="mealtime" class="dropdown">
+            <option value="all"> All </option>
+            <option value="breakfast"> Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">  Dinner</option>
+            <option value="snack">Snack</option>
+        </select>
+        <button class="clicking"> Filter </button>
+    </form>
+</div>
+    <section id="search_page">
+    {% if meal_choice != "all" %}
+            <h1 style="padding: 1rem; font-size: 50px;">
+                {{meal_choice| capfirst}}
+            </h1>
+        <div class="meal">
+                {% for meal in meals %}
+                 <div class="foodcard"> 
+                <h2 style="font-size: 25px;"> {{meal.name}} </h2>
+                <h2> Calories: {{meal.energy}} kcal</h2>
+                <h2> Protein: {{meal.protein}} g</h2>
+                <h2> Sugar: {{meal.sugar}} g</h2>
+                <h2> Fat: {{meal.fat}} g</h2>
+
+                </div>
+                {% endfor %}
+       </div>
+
+        {% else %}
+        <div class="meal"> 
+            {% for time in times %}
+                <div class="foodcard" style="width:500px; height: 200px; font-size: 20px;">
+                    <h1>
+                    {{time|capfirst}}
+                    </h1>
+                    {% for meal in meals %}
+                        {% if meal.meal_type == time %}
+                        <p>
+                            {{meal.name}}
+                        </p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+          {% endfor %}
+        </div>
+     {% endif %}
+    </section>
+
+</body>
+</html>

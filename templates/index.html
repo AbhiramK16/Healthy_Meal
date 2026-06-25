@@ -25,7 +25,8 @@
 								{% if user.is_authenticated %}
 							<li><a  href="{% url 'index' %}"><span> Hello, {{user.first_name}}</span></a></li>
 							<li>	<a  href="{% url 'logout' %}"><span>Logout</span></a> </li>
-						
+							<li> <a href="{% url 'search' %}"> <span> Foods</span></a></li>
+							<li> <a href="{% url 'myplan' %}"> <span> My Plan</span></a></li>
 
 								{% else %}
 								<li> <a  href="{% url 'signup' %}"><span> Sign Up</span></a></li>
@@ -47,7 +48,7 @@
 				</section>
 
 			<!-- Main -->
-				<section id="main">
+				<section >
 						<div class="row"> 
 							<div class="content" >
 								<h3> Tracks nutrients, calories and in foods</h3>
@@ -69,7 +70,7 @@
 
 				<section id="start">
 					
-				 <h3> Start by signing up and heading to calculate your next meal. </h3>
+				 <h3 style="text-align: center; margin: 0 auto; max-width: 800px;"> Start by signing up and heading to calculate your next meal. </h3>
 
 				</section>
 
