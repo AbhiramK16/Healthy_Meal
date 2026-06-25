@@ -4,8 +4,10 @@ charset-normalizer==3.4.7
 click==8.1.8
 Django==4.2.30
 dotenv==0.9.9
+gunicorn==23.0.0
 h11==0.16.0
 idna==3.18
+packaging==26.2
 psycopg2-binary==2.9.12
 python-dotenv==1.2.1
 requests==2.32.5
