@@ -88,6 +88,13 @@ if os.getenv('DB_HOST'):
             'PORT': os.getenv('DB_PORT', '5432'),
         }
     }
+elif os.getenv('VERCEL'):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': '/tmp/db.sqlite3',
+        }
+    }
 else:
     DATABASES = {
         'default': {
