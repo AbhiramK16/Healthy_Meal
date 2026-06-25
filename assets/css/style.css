@@ -1,0 +1,69 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #d2e6c9;
+  font-family: Gill Sans, sans-serif;
+
+}
+
+h1 {
+	margin-left: 0.6rem;
+  	font-size: 1.8rem;
+}
+.card {
+  max-width: 450px;
+  width:100%;
+  background: rgb(252,250,251);
+  padding: 1rem 1rem 1rem 1rem;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 5px rgba(10,45,100, 0.3);
+}
+.group input {
+	width: 95%;
+  	margin-top: 1px;
+  	border-radius: 5px;
+  	border-width: 1px;
+
+}
+
+.group label {
+  font-size: 0.9em;
+}
+.row{
+	display: grid;
+    grid-template-columns: 0.5fr 0.5fr;
+  	gap: 1rem;
+  	padding: 2px 2px 2px 2px;
+  	width:95%;
+
+}
+.group {
+	display:block;
+  	font-family: 'Poppins', sans-serif;
+  	padding: 0.5rem;
+}
+
+p {
+	margin-left: 0.5rem;
+}
+#error {
+    color: red;
+}
+button {
+	margin-left: 0.5rem;
+    margin-top: 0.5rem;
+  	width:95%;
+  	border: none;
+  	color: white;
+  	background: rgb(0, 180, 180);
+}
+
+button:hover{
+	background: rgb(0, 200, 200);
+}
+
+
+
+

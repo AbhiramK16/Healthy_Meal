@@ -1,5 +1,4 @@
 {% load static %}
-{% static 'images' as baseUrl %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +18,7 @@
 			<nav id="nav">
 				<ul class="homebar">
 				<li><a  href="{% url 'index' %}"><span> Home </span></a></li>
-                <li><a  href="{% url 'index' %}"><span> Hello, {{user.first_name}}</span></a></li>
+                {% if user.is_authenticated %}<li><a  href="{% url 'index' %}"><span> Hello, {{user.first_name}}</span></a></li>{% endif %}
 				<li>	<a  href="{% url 'logout' %}"><span>Logout</span></a> </li>
 				<li> <a href="{% url 'search' %}"> <span> Foods</span></a></li>
                 <li> <a href="{% url 'myplan' %}"> <span> My Plan</span></a></li>
@@ -29,7 +28,7 @@
 		</div>
 </section>
 
-<section id="main" style="background-image: url('{{baseUrl}}/cali_foods.jpg'); background-size: cover;">
+<section id="main" style="background-image: url('{% static 'images/cali_foods.jpg' %}'); background-size: cover;">
     <h2 style="text-align: center; font-size: 100px; color: white; text-shadow: 10px 5px 8px rgba(0,0,0,0.9);"> Search for foods</h2>
 
 <div class="bar">

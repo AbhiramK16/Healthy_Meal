@@ -16,7 +16,7 @@
 			<nav id="nav">
 				<ul class="homebar">
 				<li><a  href="{% url 'index' %}"><span> Home </span></a></li>
-                <li><a  href="{% url 'index' %}"><span> Hello, {{user.first_name}}</span></a></li>
+                {% if user.is_authenticated %}<li><a  href="{% url 'index' %}"><span> Hello, {{user.first_name}}</span></a></li>{% endif %}
 				<li>	<a  href="{% url 'logout' %}"><span>Logout</span></a> </li>
 				<li> <a href="{% url 'search' %}"> <span> Foods</span></a></li>
                 <li> <a href="{% url 'myplan' %}"> <span> My Plan</span></a></li>
