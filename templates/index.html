@@ -1,5 +1,4 @@
 {% load static %}
-{% static "images" as baseUrl %}
 
 <!DOCTYPE HTML>
 <html>
@@ -40,7 +39,7 @@
 	
 
 			<!-- Banner -->
-				<section id="banner" style="background-image: url('{{baseUrl}}/Variety-fruits-vegetables.jpg');">
+				<section id="banner" style="background-image: url('{% static 'images/Variety-fruits-vegetables.jpg' %}');">
 					<div id="container_diff">
 						<p> A better meal <strong > for a better life. </strong> </p> <br>
 						<p> What's a better deal? </p>
@@ -52,16 +51,16 @@
 						<div class="row"> 
 							<div class="content" >
 								<h3> Tracks nutrients, calories and in foods</h3>
-								<img src="{{baseUrl}}/nutrients.jpg">	
+								<img src="{% static 'images/nutrients.jpg' %}">	
 							</div>
 							<div class="content" >
 								<h3> Personalized and tailored to your diet and exercise</h3>
-								<img src="{{baseUrl}}/treadmill.jpg">	
+								<img src="{% static 'images/treadmill.jpg' %}">	
 	
 							</div>
 							<div class="content" >
 								<h3> Tracks personal growth and pushes for the best version</h3>
-								<img src="{{baseUrl}}/charts.jpg">	
+								<img src="{% static 'images/charts.jpg' %}">	
 	
 							</div>
 					</div>
