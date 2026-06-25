@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth.models import User, auth
-# Create your views here.
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 
 def logout(request):
-    auth.logout(request)
+    logout(request)
     return redirect('/')
 
 def register(request):
@@ -32,14 +32,15 @@ def register(request):
             return redirect('signup')
     else:
         return render(request, 'signup.html')
+
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
 
-        user = auth.authenticate(username=username, password=password)
+        user = authenticate(username=username, password=password)
         if user is not None:
-            auth.login(request, user)
+            login(request, user)
             return redirect('/')
         else:
             messages.info(request, 'User not found')
