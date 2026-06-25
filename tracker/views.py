@@ -1,9 +1,10 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 import requests
 from .models import MealTime
 from django.utils import timezone
 import os
-# Create your views here.
+
 def index(request):
     return render(request, 'index.html')
 
@@ -22,7 +23,6 @@ def search(request):
                             })
         
         findings = food.json().get('foods', [])
-        print(findings)
         check = query.lower().strip()
         for finding in findings:
             if check == finding['description'].lower().strip(): 
@@ -40,6 +40,7 @@ def search(request):
 
     return render(request, 'search.html', {'nutrients' : nutrient_values, 'query' : query})
 
+@login_required(login_url='login')
 def addFood(request):
     if request.method == "POST":
         
@@ -61,6 +62,7 @@ def addFood(request):
         )
     return render(request, 'myplan.html')
 
+@login_required(login_url='login')
 def myplan(request):    
     today = timezone.now().date()
     meal_choice = request.GET.get('mealtime')
