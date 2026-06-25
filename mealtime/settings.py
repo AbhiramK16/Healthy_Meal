@@ -88,7 +88,7 @@ if os.getenv('DB_HOST'):
             'PORT': os.getenv('DB_PORT', '5432'),
         }
     }
-elif os.getenv('VERCEL'):
+elif os.getenv('VERCEL') or os.getenv('RENDER'):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
