@@ -3,6 +3,7 @@ certifi==2026.6.17
 charset-normalizer==3.4.7
 click==8.1.8
 Django==4.2.30
+dotenv==0.9.9
 h11==0.16.0
 idna==3.18
 psycopg2-binary==2.9.12
@@ -11,4 +12,6 @@ requests==2.32.5
 sqlparse==0.5.5
 typing_extensions==4.15.0
 urllib3==2.6.3
+uv==0.11.15
 uvicorn==0.39.0
+whitenoise==6.11.0
